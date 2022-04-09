@@ -7,9 +7,6 @@ city_name = requests.get("https://ipinfo.io/").json()
 data = requests.get(
     f'https://api.openweathermap.org/data/2.5/weather?appid=35041e9ca0dc8433974df0922c1bc688&q={city_name["city"]}').json()
 
-# to_celcius(data["main"]["temp"]).__round__(2)
-# to_fahrenite(data["main"]["temp"]).__round__(2)
-
 
 def to_celcius(temp):
     return temp - 273.15
