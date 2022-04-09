@@ -1,11 +1,15 @@
 from flask import Flask, render_template, request
 import requests
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
 
 city_name = requests.get("https://ipinfo.io/").json()
 data = requests.get(
-    f'https://api.openweathermap.org/data/2.5/weather?appid=35041e9ca0dc8433974df0922c1bc688&q={city_name["city"]}').json()
+    f'https://api.openweathermap.org/data/2.5/weather?appid={os.getenv("API_KEY")}&q={city_name["city"]}').json()
 
 
 def to_celcius(temp):
